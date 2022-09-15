@@ -1,4 +1,4 @@
-# AGE ESTIMATES FOR FLOWERING PLANTS DEPEND ON UNJUSTIFIABLE ASSUMPTIONS
+# Age estimates for flowering plants depend on unjustifiable assumptions
 
-## Analyses performed to support this study
+Analyses performed to support this study
 
