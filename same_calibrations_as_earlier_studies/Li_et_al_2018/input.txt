@@ -1,0 +1,118 @@
+####################################################
+###SEED_PLANTS######################################
+####################################################
+
+###specify_input_tree###############################
+
+input_tree <- read.tree("input.tre")
+tree <- vector("list", 1)
+tree[[1]] <- input_tree 
+
+###implement_set_auto_rates#########################
+
+auto_rates <- 1
+
+###which_implementation_of_set_auto_rates_to_use####
+
+auto_rates_type <- 2
+
+###work_through_units_for_set_auto_rates############
+
+max_rate_unit <- c(1,2,3,4,5,6,7,8,9,10,11,12)
+min_rate_unit <- c(1,2,3,4,5,6,7,8,9,10,11,12)
+
+###specified_rmax_to_use############################
+
+rmax <- 0
+
+###specified_rmax_to_use############################
+
+rmin <- 0
+
+###noise_level_to_allow#############################
+
+noise_level <- 0.0045
+
+###max_age_for_root_node############################
+
+root_max <- c(350)
+
+###min_age_for_root_node############################
+
+root_min <- c(307)
+
+###number_of_maximum_constraints####################
+
+n_max_constraints <- c(1)
+
+###age_of_maximum_constraints#######################
+
+max_constraints_ages <- vector("list", 1)
+max_constraints_ages[[1]] <- vector("list", 1)
+max_constraints_ages[[1]][[1]] <- 350
+
+###tip_labels_of_maximum_constraint_clades###########
+
+max_constraints_clade <- vector("list", 1)
+max_constraints_clade[[1]] <- vector("list", 1)
+max_constraints_clade[[1]][[1]] <- tree[[1]]$tip.label
+
+###number_of_minimum_constraints####################
+
+n_min_constraints <- c(61)
+
+###ages_of_minimum_constraints######################
+
+min_constraints_ages <- vector("list", 1)
+min_constraints_ages[[1]] <- vector("list", n_min_constraints[[1]])
+min_constraints_ages_initial <- c(307,273,227,201.3,132.9,125,125,125,113,121,113,113,104.7,104.7,100.5,100.5,100.5,93.9,89.8,89.8,89.8,89.8,89.8,89.8,86.3,86.3,83.6,83.6,78.9,78.9,77.8,72.1,72.1,66,56,56,66,37.8,47.8,56,52.2,113,66,83.6,37.8,83.6,56,56,47.8,66,49.4,64.4,61.6,56,33.9,201.3,118.5,163.5,59.2,56,157.3)
+
+for (i in 1:length(min_constraints_ages_initial)){
+min_constraints_ages[[1]][[i]] <- min_constraints_ages_initial[[i]]
+}
+
+###tip_labels_of_minimum_constraint_clades##########
+
+fossil_clade_taxa_initial <- c("Pinales_Pinaceae_Cedrus_libani_GGEA", "Cupressales_Cupressaceae_Juniperus_virginiana_NC_024024", "Cycadales_Cycadaceae_Cycas_micholitzii_XZUY", "Cycadales_Zamiaceae_Encephalartos_barteri_GNQG", "Araucariales_Araucariaceae_Araucaria_heterophylla_NC_026450", "Araucariales_Podocarpaceae_Podocarpus_totara_JN", "Cupressales_Taxaceae_Cephalotaxus_oliveri_NC_021110", "Cupressales_Cupressaceae_Juniperus_virginiana_NC_024024", "Amborellales_Amborellaceae_Amborella_trichopoda_URDJ", "Lamiales_Lamiaceae_Stenogyne_haliakalae_NC_029817", "Ranunculales_Eupteleaceae_Euptelea_pleiosperma_QTJY", "Lamiales_Lamiaceae_Stenogyne_haliakalae_NC_029817", "Canellales_Canellaceae_Warburgia_ugandensis_YW2_REA", "Canellales_Winteraceae_Drimys_granadensis_NC_008456", "Austrobaileyales_Trimeniaceae_Trimenia_moorei_FC302_2_REA", "Austrobaileyales_Schisandraceae_Kadsura_heteroclita_F591", "Acorales_Acoraceae_Acorus_calamus_var_americanus_MTII", "Poales_Poaceae_Lolium_perenne_NC_009950", "Chloranthales_Chloranthaceae_Hedyosmum_orientale_F716", "Chloranthales_Chloranthaceae_Chloranthus_spicatus_NC_009598", "Magnoliales_Eupomatiaceae_Eupomatia_bennettii_DHPO", "Magnoliales_Magnoliaceae_Magnolia_liliifera_NC_023238", "Ranunculales_Eupteleaceae_Euptelea_pleiosperma_QTJY", "Ranunculales_Berberidaceae_Epimedium_pseudowushanense_NC_029945", "Laurales_Calycanthaceae_Idiospermum_australiense_WPHN", "Laurales_Lauraceae_Cinnamomum_camphora_BCGB", "Proteales_Sabiaceae_Sabia_yunnanensis_NC_029431", "Proteales_Proteaceae_Macadamia_integrifolia_NC_025288", "Buxales_Buxaceae_Sarcococca_ruscifolia_F43", "Lamiales_Lamiaceae_Stenogyne_haliakalae_NC_029817", "Laurales_Hernandiaceae_Gyrocarpus_americanus_BSVG", "Laurales_Lauraceae_Cinnamomum_camphora_BCGB", "Dilleniales_Dilleniaceae_Tetracera_sarmentosa_F512", "Rosales_Rosaceae_Malus_orientalis_Y181", "Fagales_Nothofagaceae_Nothofagus_obliqua_TJLC", "Fagales_Juglandaceae_Carya_tonkinensis_F111", "Malvales_Thymelaeaceae_Aquilaria_sinensis_NC_029243", "Brassicales_Brassicaceae_Brassica_rapa_NC_015139", "Saxifragales_Paeoniaceae_Paeonia_delavayi_F609", "Saxifragales_Saxifragaceae_Tiarella_polyphylla_F387", "Myrtales_Combretaceae_Getonia_floribunda_F275", "Myrtales_Myrtaceae_Eucalyptus_radiata_NC_022379", "Cornales_Curtisiaceae_Curtisia_dentata_UZNH", "Cornales_Nyssaceae_Nyssa_javanica_F263", "Ericales_Tetrameristaceae_Pelliciera_rhizophorae_NZ6954", "Ericales_Theaceae_Camellia_yunnanensis_NC_022463", "Malpighiales_Clusiaceae_Clusia_palmicida_F565", "Malpighiales_Calophyllaceae_Mesua_ferrea_F912", "Magnoliales_Eupomatiaceae_Eupomatia_bennettii_DHPO", "Magnoliales_Annonaceae_Annona_muricata_YZRI", "Arecales_Dasypogonaceae_Baxteria_australis_NC_029970", "Arecales_Arecaceae_Serenoa_repens_HXJE", "Myrtales_Vochysiaceae_Vochysia_guatemalensis_F970_edit", "Myrtales_Myrtaceae_Eucalyptus_radiata_NC_022379", "Fagales_Casuarinaceae_Casuarina_equisetifolia_Yjb55", "Fagales_Juglandaceae_Carya_tonkinensis_F111", "Paracryphiales_Paracryphiaceae_Quintinia_sieberi_FC292", "Dipsacales_Caprifoliaceae_Dipsacus_inermis_F436", "Oxalidales_Cunoniaceae_Davidsonia_pruriens_FC162", "Oxalidales_Elaeocarpaceae_Elaeocarpus_hainanensis_F568", "Commelinales_Haemodoraceae_Wachendorfia_thyrsiflora_FC120", "Zingiberales_Zingiberaceae_Zingiber_spectabile_NC_020363", "Asterales_Asteraceae_Nouelia_insignis_F258", "Asterales_Asteraceae_Helianthus_decapetalus_NC_023110", "Rosales_Elaeagnaceae_Elaeagnus_gonyanthes_r74", "Rosales_Rhamnaceae_Rhamnus_japonica_EILE", "Rosales_Cannabaceae_Aphananthe_sp_YC34", "Rosales_Cannabaceae_Cannabis_sativa_NC_027223", "Apiales_Torricelliaceae_Torricellia_tiliifolia_F748", "Apiales_Torricelliaceae_Torricellia_angulata_F206", "Sapindales_Sapindaceae_Xanthoceras_sorbifolium_YC24", "Sapindales_Sapindaceae_Acer_davidii_NC_030331", "Caryophyllales_Amaranthaceae_Salicornia_bigelovii_NC_027226", "Caryophyllales_Amaranthaceae_Alternanthera_sessilis_BWRK", "Huerteales_Tapisciaceae_Tapiscia_yunnanensis_F915", "Huerteales_Tapisciaceae_Tapiscia_sinensis_F1018", "Sapindales_Meliaceae_Chukrasia_tabularis_F20", "Sapindales_Meliaceae_Azadirachta_indica_NC_023792", "Poales_Poaceae_Puelia_olyriformis_HQ", "Poales_Poaceae_Lolium_multiflorum_NC_019651", "Solanales_Solanaceae_Physalis_peruviana_NC_026570", "Solanales_Solanaceae_Iochroma_stenanthum_NC_026574", "Nymphaeales_Nymphaeaceae_Nymphaea_alba_NC_006050", "Nymphaeales_Nymphaeaceae_Nuphar_advena_WTKZ", "Proteales_Sabiaceae_Sabia_yunnanensis_NC_029431", "Proteales_Sabiaceae_Meliosma_aff_cuneifolia_GQ", "Ericales_Actinidiaceae_Saurauia_napaulensis_F127", "Ericales_Actinidiaceae_Actinidia_chinensis_NC_026690", "Apiales_Araliaceae_Hydrocotyle_javanica_F73_EDIT", "Apiales_Araliaceae_Eleutherococcus_senticosus_NC_016430", "Saxifragales_Hamamelidaceae_Loropetalum_chinense_TQOO", "Saxifragales_Hamamelidaceae_Hamamelis_mollis_F455", "Vitales_Vitaceae_Leea_indica_F72", "Vitales_Vitaceae_Vitis_aestivalis_NC_029454", "Myrtales_Myrtaceae_Heteropyxis_natalensis_NIJU", "Myrtales_Myrtaceae_Eucalyptus_radiata_NC_022379", "Sapindales_Anacardiaceae_Anacardium_occidentale_F269_edit", "Sapindales_Anacardiaceae_Rhus_chinensis_F10", "Sapindales_Rutaceae_Harrisonia_perforata_F471", "Sapindales_Rutaceae_Citrus_sinensis_NC_008334", "Rosales_Rosaceae_Prunus_padus_NC_026982", "Rosales_Rosaceae_Prunus_persica_NC_014697", "Fagales_Juglandaceae_Rhoiptelea_chiliantha_R84", "Fagales_Juglandaceae_Carya_glabra_VWIP", "Oxalidales_Elaeocarpaceae_Sloanea_hemsleyana_F749", "Oxalidales_Elaeocarpaceae_Elaeocarpus_hainanensis_F568", "Cycadales_Zamiaceae_Dioon_edule_WLIC", "Cycadales_Zamiaceae_Encephalartos_lehmannii_NC_027514", "Cycadales_Zamiaceae_Lepidozamia_peroffskyana_NC_027513", "Cycadales_Zamiaceae_Encephalartos_lehmannii_NC_027514", "Pinales_Pinaceae_Cedrus_libani_GGEA", "Pinales_Pinaceae_Pinus_sibirica_FJ899558", "Pinales_Pinaceae_Picea_sitchensis_NC_011152", "Pinales_Pinaceae_Pinus_sibirica_FJ899558", "Cupressales_Cupressaceae_Cunninghamia_lanceolata_ZQVF", "Cupressales_Cupressaceae_Juniperus_virginiana_NC_024024", "Cupressales_Cupressaceae_Thuja_plicata_VFYZ", "Cupressales_Cupressaceae_Thujopsis_dolabrata_NKIN", "Ericales_Ericaceae_Vaccinium_macrocarpon_NC_019616", "Ericales_Ericaceae_Rhododendron_scopulorum_PPPZ", "Araucariales_Araucariaceae_Araucaria_heterophylla_NC_026450", "Araucariales_Araucariaceae_Agathis_robusta_MIXZ")
+min_constraints_clade <- vector("list", 1)
+min_constraints_clade[[1]] <- vector("list", 0)
+for (i in seq(1, length(fossil_clade_taxa_initial), 2)){ 
+min_constraints_clade[[1]][[length(min_constraints_clade[[1]])+1]] <- c(fossil_clade_taxa_initial[[i]], fossil_clade_taxa_initial[[i+1]]) 
+}
+
+###tip_labels_in_tree###############################
+
+tip <- tree[[1]]$tip.label
+
+###sample_time_for_tips#############################
+
+sample_time <- vector("list", length(tree[[1]]$tip.label))
+for (i in 1:length(sample_time)){
+sample_time[[i]] <- rep(0, 2)
+}
+
+###directory_in_which_to_write_output###############
+
+output_directory <- "output"
+
+###run_extreematime_with_full_complement############
+
+exTREEmaTIMEmain(tree, 
+auto_rates, 
+auto_rates_type,
+max_rate_unit, 
+min_rate_unit, 
+rmax,
+rmin, 
+noise_level,
+root_max,
+root_min,
+n_max_constraints, 
+max_constraints_clade, 
+max_constraints_ages, 
+n_min_constraints, 
+min_constraints_clade, 
+min_constraints_ages, 
+tip, 
+sample_time,
+output_directory) 

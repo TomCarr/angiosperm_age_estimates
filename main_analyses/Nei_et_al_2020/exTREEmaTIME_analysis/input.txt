@@ -1,0 +1,152 @@
+####################################################
+###SEED_PLANTS######################################
+####################################################
+
+###specify_input_tree###############################
+
+input_tree <- read.tree("nei_rooted.tre")
+input_tree <- extract.clade(input_tree, findMRCA(input_tree, c("Prasinophyceae_sp", "Ginkgo_biloba"), "node"))
+tree <- vector("list", 1)
+tree[[1]] <- input_tree 
+
+###implement_set_auto_rates#########################
+
+auto_rates <- 1
+
+###which_implementation_of_set_auto_rates_to_use####
+
+auto_rates_type <- 2
+
+###work_through_units_for_set_auto_rates############
+
+max_rate_unit <- c(1,2,3,4,5,6,7,8,9,10,11,12)
+min_rate_unit <- c(1,2,3,4,5,6,7,8,9,10,11,12)
+
+###specified_rmax_to_use############################
+
+rmax <- 0
+
+###specified_rmax_to_use############################
+
+rmin <- 0
+
+###noise_level_to_allow#############################
+
+noise_level <- 0.0045
+
+###max_age_for_root_node############################
+
+root_max <- c(3500) # could use moon forming impact of 4.52
+
+###min_age_for_root_node############################
+
+root_min <- c(1200)
+
+###number_of_maximum_constraints####################
+
+n_max_constraints <- c(3)
+
+###age_of_maximum_constraints#######################
+
+max_constraints_ages <- vector("list", 1)
+max_constraints_ages[[1]] <- vector("list", n_max_constraints[[1]])
+max_constraints_ages[[1]][[1]] <- 3500
+max_constraints_ages[[1]][[2]] <- 1042
+#max_constraints_ages[[1]][[3]] <- 248.4
+#max_constraints_ages[[1]][[4]] <- 129.4
+max_constraints_ages[[1]][[3]] <- 458.4
+
+###tip_labels_of_maximum_constraint_clades###########
+
+max_constraints_clade <- vector("list", 1)
+max_constraints_clade[[1]] <- vector("list", n_max_constraints[[1]])
+max_constraints_clade[[1]][[1]] <- tree[[1]]$tip.label
+max_constraints_clade[[1]][[2]] <- c("Marchantia_polymorpha", "Amborella_trichopoda")
+#max_constraints_clade[[1]][[3]] <- c("Amborella_trichopoda", "Lepidium_virginicum")
+#max_constraints_clade[[1]][[4]] <- c("Populus_trichocarpa", "Arabidopsis_thaliana")
+max_constraints_clade[[1]][[3]] <- c("Huperzia_lucidula", "Amborella_trichopoda")
+
+###number_of_minimum_constraints####################
+
+n_min_constraints <- c(15)
+
+###ages_of_minimum_constraints######################
+
+min_constraints_ages <- vector("list", 1)
+min_constraints_ages[[1]] <- vector("list", n_min_constraints[[1]])
+min_constraints_ages[[1]][[1]] <- 1200
+min_constraints_ages[[1]][[2]] <- 750
+min_constraints_ages[[1]][[3]] <- 405
+min_constraints_ages[[1]][[4]] <- 345
+min_constraints_ages[[1]][[5]] <- 449
+##############################min_constraints_ages[[1]][[6]] <- 381.1###
+min_constraints_ages[[1]][[6]] <- 420.4
+min_constraints_ages[[1]][[7]] <- 416
+min_constraints_ages[[1]][[8]] <- 388.2
+min_constraints_ages[[1]][[9]] <- 306.2
+min_constraints_ages[[1]][[10]] <- 264.7
+min_constraints_ages[[1]][[11]] <- 147
+###
+min_constraints_ages[[1]][[12]] <- 127
+min_constraints_ages[[1]][[13]] <- 113
+min_constraints_ages[[1]][[14]] <- 86.3
+min_constraints_ages[[1]][[15]] <- 123
+
+###tip_lables_of_minimum_constraint_clades#########
+
+min_constraints_clade <- vector("list", 1)
+min_constraints_clade[[1]] <- vector("list", n_min_constraints[[1]])
+min_constraints_clade[[1]][[1]] <- c("Prasinophyceae_sp", "Pyramimonas_parkeae") #stem
+min_constraints_clade[[1]][[2]] <- c("Schizomeris_leibleinii", "Chlamydomonas_reinhardtii") #stem
+min_constraints_clade[[1]][[3]] <- c("Chara_vulgaris", "Nitella_hookeri") #crown
+min_constraints_clade[[1]][[4]] <- c("Mesotaenium_endlicherianum", "Cosmarium_botrytis") #crown fine probably
+min_constraints_clade[[1]][[5]] <- c("Marchantia_polymorpha", "Amborella_trichopoda") #crown - fine - its a tracheophyte character
+###############################min_constraints_clade[[1]][[6]] <- c("Marchantia_polymorpha", "Nyholmiella_obtusifolia")###
+min_constraints_clade[[1]][[6]] <- c("Anthoceros_formosae", "Huperzia_lucidula")
+min_constraints_clade[[1]][[7]] <- c("Huperzia_lucidula", "Angiopteris_evecta")#crown fine
+min_constraints_clade[[1]][[8]] <- c("Equisetum_arvense", "Ephedra_equisetina")#crown fine
+min_constraints_clade[[1]][[9]] <- c("Cycas_taitungensis", "Sorghum_bicolor")#crown fine
+min_constraints_clade[[1]][[10]] <- c("Ginkgo_biloba", "Cycas_taitungensis")#crown fine
+min_constraints_clade[[1]][[11]] <- c("Cedrus_deodara", "Welwitschia_mirabilis")#crown fine
+###
+min_constraints_clade[[1]][[12]] <- c("Amborella_trichopoda", "Lepidium_virginicum")#crown fine
+min_constraints_clade[[1]][[13]] <- c("Lepidium_virginicum", "Anomochloa_marantoidea")
+min_constraints_clade[[1]][[14]] <- c("Populus_trichocarpa", "Lepidium_virginicum")#crown fine
+min_constraints_clade[[1]][[15]] <- c("Chloranthus_spicatus", "Populus_trichocarpa")
+
+###tip_labels_in_tree###############################
+
+tip <- tree[[1]]$tip.label
+
+###sample_time_for_tips#############################
+
+sample_time <- vector("list", length(tree[[1]]$tip.label))
+for (i in 1:length(sample_time)){
+sample_time[[i]] <- rep(0, 2)
+}
+
+###directory_in_which_to_write_output###############
+
+output_directory <- "output_test"
+
+###run_extreematime_with_full_complement############
+
+exTREEmaTIMEmain(tree, 
+auto_rates, 
+auto_rates_type,
+max_rate_unit, 
+min_rate_unit, 
+rmax,
+rmin, 
+noise_level,
+root_max,
+root_min,
+n_max_constraints, 
+max_constraints_clade, 
+max_constraints_ages, 
+n_min_constraints, 
+min_constraints_clade, 
+min_constraints_ages, 
+tip, 
+sample_time,
+output_directory) 
