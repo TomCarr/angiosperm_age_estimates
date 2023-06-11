@@ -8,6 +8,6 @@ Each directory contains the inputs and outputs for all the analyses that were pe
 
 [same_calibrations_as_earlier_studies](https://github.com/TomCarr/angiosperm_age_estimates/tree/main/same_calibrations_as_earlier_studies) contains analyses performed in exTREEmaTIME, but using exactly the same calibrations as previous studies.
 
-The estimates generated are better than previous estimates, but they are different.
+The estimates generated are not better than previous estimates, but they are different.
 
 WACCOE
