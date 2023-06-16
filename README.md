@@ -1,6 +1,6 @@
 # Deconstructing age estimates for angiosperms
 
-This is relevant to the paper: [PENDING]
+This is relevant to the paper: Deconstructing age esitmates for angiosperms
 
 Each directory contains the inputs and outputs for all the analyses that were performed as part of this study.
 
